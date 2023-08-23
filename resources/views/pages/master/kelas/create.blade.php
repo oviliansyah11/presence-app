@@ -3,7 +3,7 @@
 @section('content')
 @section('kelas', 'active')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <form action="{{ route('kelas.store') }}" method="post" enctype="multipart/form-data">
+    <form action="/kelas/create" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             @if ($errors->any())

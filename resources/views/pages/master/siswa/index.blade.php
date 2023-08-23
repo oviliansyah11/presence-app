@@ -21,6 +21,7 @@
                         <th>Alamat</th>
                         <th>No Telpon</th>
                         <th>Kelas</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -36,13 +37,16 @@
                             <td>{{ $item->kelas->nama_kelas }}</td>
                             <td>
                                 <button type="button" class="btn btn-icon btn-primary">
-                                    <span class="tf-icons bx bx-qr-scan"></span>
+                                    <span class="tf-icons bx bx-edit-alt" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                        data-bs-placement="top" data-bs-html="true"
+                                        title="<span>Edit Data</span>"></span>
                                 </button>
                                 <form action="{{ route('siswa.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-danger ml-2"
-                                        onclick="return confirm('Are you sure?')">
+                                    <button type="submit" class="btn btn-icon btn-danger ml-2" data-bs-toggle="tooltip"
+                                        data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true"
+                                        title="<span>Hapus Data</span>" onclick="return confirm('Are you sure?')">
                                         <span class="tf-icons bx bx-trash"></span>
                                     </button>
                                 </form>

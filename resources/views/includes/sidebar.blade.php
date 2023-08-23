@@ -92,7 +92,7 @@
         </li>
         <!-- User interface -->
         <li class="menu-item @yield('kelas')">
-            <a href="{{ route('kelas.index') }}" class="menu-link">
+            <a href="/kelas" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-box"></i>
                 <div data-i18n="User interface">Kelas</div>
             </a>

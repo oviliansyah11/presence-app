@@ -29,7 +29,17 @@ Route::middleware([
         return view('pages.dashboard');
     })->name('dashboard');
 
-    Route::resource('kelas', KelasController::class);
     Route::resource('siswa', SiswaController::class);
     Route::get('qrcode/{id}', [QRController::class, 'generate']);
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/kelas', [KelasController::class, 'index']);
+    Route::get('/kelas/create', [KelasController::class, 'create']);
+    Route::post('/kelas/create', [KelasController::class, 'store']);
+    Route::delete('/kelas/{id}', [KelasController::class, 'destroy']);
 });

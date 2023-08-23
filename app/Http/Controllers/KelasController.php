@@ -39,7 +39,7 @@ class KelasController extends Controller
     {
         $data = $request->all();
         Kelas::create($data);
-        // Alert::success('', 'Data berhasil disimpan!');
+        toast('Data berhasil ditambahkan!', 'success')->position('bottom-end');
         return redirect('/kelas');
     }
 
@@ -83,8 +83,11 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kelas)
+    public function destroy($id)
     {
-        dd($kelas->id);
+        $data = Kelas::find($id);
+        $data->delete();
+        toast('Data berhasil dihapus!', 'success')->position('bottom-end');
+        return redirect('/kelas');
     }
 }
