@@ -197,6 +197,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        // SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
 
     /*
@@ -212,8 +213,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        // 'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
     ])->toArray(),
 
 ];

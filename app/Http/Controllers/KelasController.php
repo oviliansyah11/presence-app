@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\KelasRequest;
 use App\Models\Kelas;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
@@ -32,16 +32,14 @@ class KelasController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreKelasRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(KelasRequest $request)
     {
         $data = $request->all();
-        // dd($data);
         Kelas::create($data);
-        // Alert::success('', 'Data berhasil disimpan');
-        toast('Data berhasil disimpan', 'success')->position('bottom-end');
+        // Alert::success('', 'Data berhasil disimpan!');
         return redirect('/kelas');
     }
 
@@ -70,11 +68,11 @@ class KelasController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateKelasRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Kelas $kelas)
+    public function update(Request $request, Kelas $kelas)
     {
         //
     }
@@ -87,8 +85,6 @@ class KelasController extends Controller
      */
     public function destroy(Kelas $kelas)
     {
-        Kelas::destroy($kelas->id);
-        toast('Data berhasil dihapus', 'success')->position('bottom-end');
-        return redirect('/kelas');
+        dd($kelas->id);
     }
 }

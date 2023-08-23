@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\QRController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +29,7 @@ Route::middleware([
         return view('pages.dashboard');
     })->name('dashboard');
 
-    Route::resource('/kelas', KelasController::class);
+    Route::resource('kelas', KelasController::class);
+    Route::resource('siswa', SiswaController::class);
+    Route::get('qrcode/{id}', [QRController::class, 'generate']);
 });

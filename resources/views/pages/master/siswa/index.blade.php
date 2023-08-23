@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-@section('kelas', 'active')
+@section('siswa', 'active')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('kelas.create') }}" type="button" class="btn btn-success">
+            <a href="{{ route('siswa.create') }}" type="button" class="btn btn-success">
                 <span class="tf-icons bx bx-plus"></span> Tambah Data
             </a>
         </div>
@@ -14,28 +14,35 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Kelas</th>
-                        <th>Action</th>
+                        <th>NISN</th>
+                        <th>Nama</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Alamat</th>
+                        <th>No Telpon</th>
+                        <th>Kelas</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @forelse ($kelas as $item)
+                    @forelse ($siswa as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama_kelas }}</td>
+                            <td>{{ $item->nisn }}</td>
+                            <td>{{ $item->nama }}</td>
+                            <td>{{ $item->tgl_lahir }}</td>
+                            <td>{{ $item->jenis_kelamin }}</td>
+                            <td>{{ $item->alamat }}</td>
+                            <td>{{ $item->no_telpon }}</td>
+                            <td>{{ $item->kelas->nama_kelas }}</td>
                             <td>
-
-                                <a href="/qrcode/{{ $item->id }}" class="btn btn-icon btn-primary"
-                                    data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top"
-                                    data-bs-html="true" title="<span>Show QR Code</span>">
+                                <button type="button" class="btn btn-icon btn-primary">
                                     <span class="tf-icons bx bx-qr-scan"></span>
-                                </a>
-                                <form action="{{ route('kelas.destroy', $item->id) }}" method="POST" class="d-inline">
+                                </button>
+                                <form action="{{ route('siswa.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-danger ml-2" data-bs-toggle="tooltip"
-                                        data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true"
-                                        title="<span>Hapus Data</span>">
+                                    <button type="submit" class="btn btn-icon btn-danger ml-2"
+                                        onclick="return confirm('Are you sure?')">
                                         <span class="tf-icons bx bx-trash"></span>
                                     </button>
                                 </form>
@@ -50,5 +57,6 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 @endsection

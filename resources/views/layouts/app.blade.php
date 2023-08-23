@@ -59,7 +59,6 @@
           <!-- Navbar -->
             @include('includes.navbar')
 
-            <div class="container-xxl flex-grow-1 container-p-y">
           <!-- Content wrapper -->
             @yield('content')
           <!-- Content wrapper -->

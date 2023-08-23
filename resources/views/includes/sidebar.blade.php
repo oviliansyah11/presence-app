@@ -84,8 +84,8 @@
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Master Data</span></li>
         <!-- Cards -->
-        <li class="menu-item">
-            <a href="cards-basic.html" class="menu-link">
+        <li class="menu-item @yield('siswa')">
+            <a href="{{ route('siswa.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-group"></i>
                 <div data-i18n="Basic">Siswa</div>
             </a>

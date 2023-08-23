@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SiswaRequest;
 use App\Models\Siswa;
-use App\Http\Requests\StoreSiswaRequest;
-use App\Http\Requests\UpdateSiswaRequest;
+
+use App\Models\Kelas;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SiswaController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        $siswa = Siswa::all();
+        return view('pages.master.siswa.index', compact('siswa'));
     }
 
     /**
@@ -25,7 +30,9 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.master.siswa.create', [
+            'kelas' => Kelas::all()
+        ]);
     }
 
     /**
@@ -34,9 +41,13 @@ class SiswaController extends Controller
      * @param  \App\Http\Requests\StoreSiswaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSiswaRequest $request)
+    public function store(SiswaRequest $request)
     {
-        //
+        $data = $request->all();
+        Siswa::create($data);
+        // Alert::success('', 'Data berhasil ditambahkan!');
+        toast('Data berhasil ditambahkan!', 'success')->position('bottom-end');
+        return redirect('/siswa');
     }
 
     /**
@@ -68,7 +79,7 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSiswaRequest $request, Siswa $siswa)
+    public function update(Request $request, Siswa $siswa)
     {
         //
     }
@@ -81,6 +92,9 @@ class SiswaController extends Controller
      */
     public function destroy(Siswa $siswa)
     {
-        //
+        // dd($siswa->id);
+        Siswa::destroy($siswa->id);
+        toast('Data berhasil dihapus!', 'success')->position('bottom-end');
+        return redirect('/siswa');
     }
 }
