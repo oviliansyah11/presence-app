@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\QRController;
 use App\Http\Controllers\SiswaController;

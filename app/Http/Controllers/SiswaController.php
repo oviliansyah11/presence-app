@@ -44,6 +44,7 @@ class SiswaController extends Controller
     public function store(SiswaRequest $request)
     {
         $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
         Siswa::create($data);
         // Alert::success('', 'Data berhasil ditambahkan!');
         toast('Data berhasil ditambahkan!', 'success')->position('bottom-end');

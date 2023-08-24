@@ -30,7 +30,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nisn }}</td>
                             <td>{{ $item->nama }}</td>
-                            <td>{{ $item->tgl_lahir }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->tgl_lahir)->format('d-M-Y') }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
                             <td>{{ $item->alamat }}</td>
                             <td>{{ $item->no_telpon }}</td>
@@ -54,7 +54,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3" style="text-align: center">No data available yet.</td>
+                            <td colspan="8" style="text-align: center">No data available yet.</td>
                         </tr>
                     @endforelse
                 </tbody>
